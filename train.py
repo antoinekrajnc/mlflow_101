@@ -63,7 +63,6 @@ if __name__ == "__main__":
             registered_model_name="random_forest"
         )
 
-        #mlflow.log_metric("Training Time", str(np.round((time.time() - start_time)/60), 2) + " min")
-        
-    print("...Done!")
-    print(f"---Total training time: {time.time()-start_time} seconds")
+        #mlflow.log_metric("Training Time", str(np.round((time.time() - start_time)/60), 2) + " min")        
+        print("...Done!")
+        print(f"---Total training time: {time.time()-start_time} seconds")
