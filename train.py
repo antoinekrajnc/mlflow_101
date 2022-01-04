@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import mlflow
 import time
 from sklearn.model_selection import train_test_split, GridSearchCV 
@@ -7,12 +8,13 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.pipeline import Pipeline
 
 
-### NECESSARY SETUP
-experiment_name="hyperparameter_tuning"
-mlflow.set_experiment(experiment_name)
-experiment = mlflow.get_experiment_by_name(experiment_name)
-
 if __name__ == "__main__":
+
+    ### NECESSARY SETUP
+    experiment_name="hyperparameter_tuning"
+    mlflow.set_experiment(experiment_name)
+    experiment = mlflow.get_experiment_by_name(experiment_name)
+    
     print("training model...")
     
     # Time execution
@@ -61,7 +63,7 @@ if __name__ == "__main__":
             registered_model_name="random_forest"
         )
 
-        mlflow.log_metric("Training Time (in minutes)", (time.time() - start_time)/60)
+        mlflow.log_metric("Training Time", str(np.round((time.time() - start_time)/60), 2) + " min")
         
     print("...Done!")
     print(f"---Total training time: {time.time()-start_time} seconds")
