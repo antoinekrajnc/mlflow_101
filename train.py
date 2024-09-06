@@ -45,10 +45,10 @@ if __name__ == "__main__":
     with mlflow.start_run(run_id = run.info.run_id) as run:
 
         params_grid = {
-            "Random_Forest__n_estimators": list(range(10,101, 10)),
+            "Random_Forest__n_estimators": list(range(80,101, 10)),
             "Random_Forest__criterion": ["squared_error"],
-            "Random_Forest__max_depth": list(range(5, 35, 10)) + [None],
-            "Random_Forest__min_samples_split": list(range(2, 40, 3))
+            "Random_Forest__max_depth": list(range(15, 35, 10)) + [None],
+            "Random_Forest__min_samples_split": list(range(20, 41, 10))
         }
 
         model = GridSearchCV(pipe, params_grid, n_jobs=-1, verbose=3, cv=9, scoring="r2")
